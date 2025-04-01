@@ -1,11 +1,16 @@
-class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
+class Solution(object):
+    def twoSum(self, nums, target):
         ans = []
-        m = {}
-        for i in range(len(nums)):
-            if target - nums[i] in m:
-                ans.append(m[target - nums[i]])
-                ans.append(i)
-            else:
-                m[nums[i]] = i
+        dic = {}
+        for index, num in enumerate(nums):
+            if((target - num) in dic):
+                ans.append(index)
+                ans.append(dic[(target - num)])
+                return ans
+            dic[num] = index
+            
         return ans
+
+array = [2,11,7,15]
+sol = Solution()
+print(sol.twoSum(array, 9))
